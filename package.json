@@ -5,7 +5,6 @@
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js"
   },
-
   "devDependencies": {
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",
@@ -20,9 +19,9 @@
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
-  
   "dependencies": {
     "babel-preset-stage-1": "^6.1.18",
+    "firebase": "^4.3.1",
     "lodash": "^3.10.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
