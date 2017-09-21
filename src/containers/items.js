@@ -1,24 +1,21 @@
+import React, {Component} from 'react';
 import { connect } from 'react-redux'
-import {actionCreator} from 'actionCreatorPath'
+import { bindActionCreators } from 'redux';
 
-class SearchBar extends Component {
+class Items extends Component {
     constructor(props) {
         super(props);
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
         prop: state.prop
     }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        dispatch1: () => {
-            dispatch(actionCreator)
-        }
-    }
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({ fetchWeather }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(items)
+export default connect(mapStateToProps, mapDispatchToProps)(Items)
