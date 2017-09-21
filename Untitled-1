@@ -1,0 +1,29 @@
+user: {
+    [{
+            name: ,
+            uid: email,
+            venmoAcc: venmoAcc,
+            itemsList:
+        },
+        {
+            name: ,
+            uid: email,
+            venmoAcc: venmoAcc,
+            itemsList:
+        },
+    ]
+}
+
+items: {
+    [{
+        itemID: ,
+        userID: ,
+        description: "",
+        type: ,
+        status: [],
+        price: ,
+        rate[],
+        image: ,
+        location: ,
+    }]
+}
