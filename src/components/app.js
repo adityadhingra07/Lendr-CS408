@@ -68,15 +68,18 @@ class App extends Component {
     }
 
     renderSelection() {
-        if(this.props.renderSelector == 'POST_NEW_ITEM') {
+        if(this.props.renderSelector == 'POST_NEW_ITEM' && this.state.user) {
             return (
                 <PostForm />
             );
         }
-        else if(this.props.renderSelector == 'AVAILABLE_ITEMS') {
+        else if(this.props.renderSelector == 'AVAILABLE_ITEMS' && this.state.user) {
             return (
                 <Item />
             );         
+        }
+        else {
+            window.alert("Please login first!");
         }
     }
     

@@ -8,9 +8,9 @@ class PostForm extends Component {
 
         this.state = {
             item_name :  "",
-            item_type : "",
+            item_type : "sell",
             item_price : "",
-            item_rent : "",
+            item_rate : "hourly",
             item_description : ""
         };
 
@@ -25,23 +25,59 @@ class PostForm extends Component {
         const data_type = event.target.getAttribute('data-type');
         console.log('data-type:', data_type);
 
+        const targetValue = event.target.value;
+
         switch (data_type) {
+
+            case 'item_name':
+                this.setState({ item_name: targetValue });
+                break;
+            case 'item_type_sell':
+                this.setState({ item_type: targetValue }); 
+                break;           
+            case 'item_type_rent':
+                this.setState({ item_type: targetValue });
+                break;
+            case 'item_price':
+                this.setState({ item_price: targetValue });
+                break;
+            case 'item_rent_hourly':
+                this.setState({ item_rate: targetValue });
+                break;
+            case 'item_rent_daily':
+                this.setState({ item_rate: targetValue });
+                break;
+            case 'item_rent_weekly':
+                this.setState({ item_rate: targetValue });
+                break;
+            case 'item_rent_monthly':
+                this.setState({ item_rate: targetValue });
+                break;
+            case 'item_description':
+                this.setState({ item_description: targetValue });
+                break;
+
+
             default:
                 break;
         }
     }
 
+    onFormSubmit() {
+        console.log(this.state);
+    }
+
     render() {
         return (
-            <div className="container-fluid">
-                <div className="row">
+            <div className="container">
+                <div id="form-holder" className="row z-depth-4">
                     <div className="row">
                         <div className="input-field col s5">
                             <input
                                 onChange={this.onInputChange.bind(this)}
                                 data-type="item_name"
                                 placeholder="Item Name"
-                                value=""
+                                value={this.state.item_name}
                                 id="item-name"
                                 type="text"
                                 className="active validate"
@@ -65,7 +101,7 @@ class PostForm extends Component {
                     <div className="row">
                         <div className="input-field col s5">
                             <i className="material-icons prefix">attach_money</i>
-                            <input onChange={this.onInputChange.bind(this)}
+                            <input onChange={this.onInputChange.bind(this)} value={this.state.item_price}
                             data-type="item_price" placeholder="Price" id="price" type="text" className="validate"/>
                             <label htmlFor="price">Price</label>
                         </div>
@@ -98,7 +134,7 @@ class PostForm extends Component {
                     <div className="row">
                         <div className="input-field col s5">
                             <i className="material-icons prefix">mode_edit</i>
-                            <textarea onChange={this.onInputChange.bind(this)}
+                            <textarea onChange={this.onInputChange.bind(this)} value={this.state.item_description}
                             data-type="item_description" id="description" className="materialize-textarea"></textarea>
                             <label htmlFor="description">Description</label>
                         </div>
@@ -115,7 +151,7 @@ class PostForm extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <a className="waves-effect waves-light btn">button</a>
+                        <a onClick={this.onFormSubmit.bind(this)}  className="waves-effect waves-light btn">Post Item</a>
                     </div>
                 </div>
             </div>
