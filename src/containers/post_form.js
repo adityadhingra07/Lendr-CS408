@@ -68,8 +68,9 @@ class PostForm extends Component {
 
     render() {
         return (
-            <div className="container animated fadeIn">
-                <div id="form-holder" className="row z-depth-4">
+            <div id="form-holder" className="card animated fadeIn">
+                <div className="card-content">
+                    <span className="card-title">Add a new item for rent!</span>
                     <div className="row">
                         <div className="input-field col s5">
                             <input

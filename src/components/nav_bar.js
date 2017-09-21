@@ -3,16 +3,16 @@ import React from 'react'
 const NavBar = (props) => {
 
     return(
-        <div className="animated fadeInDown">
+        <div id="nav-holder" className="animated fadeInDown">
             <nav> 
                 <div className="nav-wrapper">
-                    <a href="#" className="brand-logo">Lendr</a>
+                    <a id="app-logo" href="#" className="brand-logo">Lendr</a>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li>
-                            <a onClick={props.navBarProps.postItem}> Post Items </a>
+                            <a id="nav-links" onClick={props.navBarProps.postItem}> Post Items </a>
                         </li>
                         <li>
-                            <a onClick={props.navBarProps.availableItems}> Available Items </a>
+                            <a id="nav-links" onClick={props.navBarProps.availableItems}> Available Items </a>
                         </li>
                         <li>
                             {props.navBarProps.userInfo
@@ -24,7 +24,7 @@ const NavBar = (props) => {
                                         {props.navBarProps.userInfo.displayName}
                                     </div>
                                 </a>
-                                : <a id="auth-button" onClick={props.navBarProps.stateLogin}><img id="auth-img" src="../../assets/web/2x/btn_google_signin_dark_normal_web@2x.png"/></a>
+                                : <a id="auth-button-sign-in" onClick={props.navBarProps.stateLogin}><img id="auth-img" src="../../assets/web/2x/btn_google_signin_dark_normal_web@2x.png"/></a>
                             }
                         </li>
                     </ul>

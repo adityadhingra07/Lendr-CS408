@@ -91,7 +91,7 @@ class App extends Component {
     
     render() {
 
-        // console.log(this.state.user);
+        console.log(this.state.user);
         return (
 
             <div className="animated fadeIn">
