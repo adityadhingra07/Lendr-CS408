@@ -69,7 +69,7 @@ class PostForm extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container animated fadeIn">
                 <div id="form-holder" className="row z-depth-4">
                     <div className="row">
                         <div className="input-field col s5">

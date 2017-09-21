@@ -78,16 +78,15 @@ class App extends Component {
                 <Item />
             );         
         }
-        else {
-            window.alert("Please login first!");
-        }
     }
+
+    loginButtonSelector() {}
     
     render() {
 
         console.log(this.state.user);
         return (
-            <div>
+            <div className="animated fadeInDown">
                 <nav> 
                     <div className="nav-wrapper">
                         <a href="#" className="brand-logo">Lendr</a>
@@ -100,15 +99,15 @@ class App extends Component {
                             </li>
                             <li>
                                 {this.state.user
-                                    ? <a id="auth-button" onClick={this.logout}>Logout</a>
-                                    : <a id="auth-button" onClick={this.login}>Log In</a>
+                                    ? <a id="auth-button" onClick={this.logout}>Log out of <img src="../../assets/web/vector/btn_google_light_pressed_ios.svg"/></a>
+                                    : <a id="auth-button" onClick={this.login}>Sign in with <img src="../../assets/web/vector/btn_google_light_normal_ios.svg"/></a>
                                 }
                             </li>
                         </ul>
                     </div>
                 </nav>
 
-                <div className="row">
+                <div className="row animated fadeIn">
                     <div className="col m12">
                         {this.state.user
                             ? 

@@ -9,7 +9,7 @@ class Item extends Component {
 
     render() {
         return(
-            <div className="row">
+            <div className="row animated fadeIn">
                 <div id="item-holder" className="col m12 offset-m3">
                     <div className="card grey lighten-2 z-depth-0">
                         <div class="card-image">
