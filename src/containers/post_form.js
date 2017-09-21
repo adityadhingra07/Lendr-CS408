@@ -23,7 +23,6 @@ class PostForm extends Component {
 
     onInputChange = (event) => {
         const data_type = event.target.getAttribute('data-type');
-        console.log('data-type:', data_type);
 
         const targetValue = event.target.value;
 

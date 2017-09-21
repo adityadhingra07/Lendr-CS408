@@ -7,6 +7,9 @@ import firebase, {auth, provider} from '../firebase.js';
 import postItemButton from '../actions/post_item_button';
 import availableItemsButton from '../actions/available_items'
 
+//import components
+import NavBar from './nav_bar'
+
 //import nested containters
 import Item from '../containers/item'
 import PostForm from '../containers/post_form'
@@ -22,13 +25,8 @@ class App extends Component {
             user: null
         }
 
-        this.login = this
-            .login
-            .bind(this);
-        this.logout = this
-            .logout
-            .bind(this);
-
+        this.login = this.login.bind(this);
+        this.logout = this.logout.bind(this);
         this.renderSelection = this.renderSelection.bind(this);
         this.postItem = this.postItem.bind(this);
         this.availableItems = this.availableItems.bind(this);
@@ -80,48 +78,26 @@ class App extends Component {
         }
     }
 
-    loginButtonSelector() {}
+    //Collect navBarProps into single object to pass as props
+    navBarProps() {
+        return ({
+            postItem: this.postItem,
+            availableItems: this.availableItems,
+            userInfo: this.state.user,
+            stateLogin: this.login,
+            stateLogout: this.logout,
+        });
+    }
     
     render() {
 
-        console.log(this.state.user);
+        // console.log(this.state.user);
         return (
-            <div className="animated fadeInDown">
-                <nav> 
-                    <div className="nav-wrapper">
-                        <a href="#" className="brand-logo">Lendr</a>
-                        <ul id="nav-mobile" className="right hide-on-med-and-down">
-                            <li>
-                                <a onClick={this.postItem}> Post Items </a>
-                            </li>
-                            <li>
-                                <a onClick={this.availableItems}> Available Items </a>
-                            </li>
-                            <li>
-                                {this.state.user
-                                    ? <a id="auth-button" onClick={this.logout}>Log out of <img src="../../assets/web/vector/btn_google_light_pressed_ios.svg"/></a>
-                                    : <a id="auth-button" onClick={this.login}>Sign in with <img src="../../assets/web/vector/btn_google_light_normal_ios.svg"/></a>
-                                }
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
 
-                <div className="row animated fadeIn">
-                    <div className="col m12">
-                        {this.state.user
-                            ? 
-                                <div id="name-card" className="card-panel teal">
-                                    <span className="white-text">
-                                        Welcome back {this.state.user.displayName}!
-                                    </span>
-                                </div>
-                            
-                            : <div></div>
-                        }
-                    </div>
-                </div>
+            <div className="animated fadeIn">
                 
+                <NavBar navBarProps={this.navBarProps()}/>
+
                 { this.renderSelection() }
 
             </div>
