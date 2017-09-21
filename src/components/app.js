@@ -7,6 +7,10 @@ import firebase, {auth, provider} from '../firebase.js';
 import postItemButton from '../actions/post_item_button';
 import availableItemsButton from '../actions/available_items'
 
+//import nested containters
+import Item from '../containers/item'
+import PostForm from '../containers/post_form'
+
 class App extends Component {
 
     constructor(props) {
@@ -64,35 +68,14 @@ class App extends Component {
     }
 
     renderSelection() {
-        console.log("epic:", this.props);
         if(this.props.renderSelector == 'POST_NEW_ITEM') {
             return (
-                <div id="new-post-holder" className="row">
-                    <div className="col m12">
-                        <div id="new-post-form">
-                            <div className="card-panel teal center-align ">
-                                <span className="white-text">
-                                    ADD A NEW POST FOR SALE/RENT!
-                                </span>
-                            </div> 
-                        </div>                       
-                    </div>
-                </div>
+                <PostForm />
             );
         }
         else if(this.props.renderSelector == 'AVAILABLE_ITEMS') {
             return (
-                <div id="new-post-holder" className="row">
-                    <div className="col m12">
-                        <div id="new-post-form">
-                            <div className="card-panel teal center-align ">
-                                <span className="white-text">
-                                    NEW POSTS HERE!
-                                </span>
-                            </div> 
-                        </div>                       
-                    </div>
-                </div>
+                <Item />
             );         
         }
     }
