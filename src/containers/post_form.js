@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
+import * as firebase from 'firebase';
 
 class PostForm extends Component {
     constructor(props) {
@@ -60,10 +61,14 @@ class PostForm extends Component {
             default:
                 break;
         }
-    }
+    };
 
     onFormSubmit() {
         console.log(this.state);
+        let itemsRef = firebase.app().database().ref().child('items');
+        console.log("itemsRef: ", itemsRef);
+        let item = itemsRef.push(this.state);
+        console.log("item: ", item.key);
     }
 
     render() {
