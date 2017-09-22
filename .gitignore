@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-node_modules/
-.idea/
-
-=======
-/node_modules
+node_modules
 bundle.js
 npm-debug.log
 .DS_Store
@@ -11,4 +6,4 @@ npm-debug.log
 # IntelliJ
 *.iml
 /.idea
->>>>>>> origin/fetch-data
+
