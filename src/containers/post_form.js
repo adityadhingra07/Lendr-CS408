@@ -16,11 +16,7 @@ class PostForm extends Component {
         };
 
     }
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> d090e98d5ccae06ea9bbedee901480422f6b242d
     onInputChange = (event) => {
         const data_type = event.target.getAttribute('data-type');
 
@@ -62,12 +58,12 @@ class PostForm extends Component {
         }
     };
 
-    onFormSubmit() {
+   export onFormSubmit() {
         console.log(this.state);
-        let itemsRef = firebase.app().database().ref().child('items');
-        console.log("itemsRef: ", itemsRef);
-        let item = itemsRef.push(this.state);
-        console.log("item: ", item.key);
+        // let itemsRef = firebase.app().database().ref().child('items');
+        // console.log("itemsRef: ", itemsRef);
+        // let item = itemsRef.push(this.state);
+        // console.log("item: ", item.key);
     }
 
     render() {
@@ -171,4 +167,5 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({}, dispatch);
 }
 
+export const onFormSubmit = PostForm.prototype.onFormSubmit;
 export default connect(mapStateToProps, mapDispatchToProps)(PostForm)
