@@ -16,12 +16,7 @@ class PostForm extends Component {
         };
 
     }
-
-    createItem() {
-        item = new Object()
-        item.name = "";
-    }
-
+    
     onInputChange = (event) => {
         const data_type = event.target.getAttribute('data-type');
 
