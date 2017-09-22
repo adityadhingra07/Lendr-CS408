@@ -8,6 +8,7 @@ class Item extends Component {
     }
 
     render() {
+	const item = this.props.item;
         return(
             <div className="row animated fadeIn">
                 <div id="item-holder" className="col m12 offset-m3">
@@ -16,12 +17,9 @@ class Item extends Component {
                             <img/>
                         </div>
                         <div className="card-content black-text">
-                            <span className="card-title">Vacuum Cleaner</span>
-                            <blockquote>Price: 5$/hr</blockquote>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively. I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively.
-                            </p>
+                            <span className="card-title">{item.item_name}</span>
+                            <blockquote>Price: ${item.item_price} {item.item_rate} </blockquote>
+                            <p> {item.item_description} </p>
                         </div>
                         <div className="card-action">
                             <button className="waves-effect waves-light btn z-depth-0">Rent</button>
@@ -29,7 +27,6 @@ class Item extends Component {
                     </div>
                 </div>
             </div>
-         
         );
     }
 }

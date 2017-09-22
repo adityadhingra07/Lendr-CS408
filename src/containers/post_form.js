@@ -16,18 +16,13 @@ class PostForm extends Component {
         };
 
     }
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> d090e98d5ccae06ea9bbedee901480422f6b242d
     onInputChange = (event) => {
         const data_type = event.target.getAttribute('data-type');
 
         const targetValue = event.target.value;
 
         switch (data_type) {
-
             case 'item_name':
                 this.setState({ item_name: targetValue });
                 break;
