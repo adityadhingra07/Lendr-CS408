@@ -23,7 +23,6 @@ class PostForm extends Component {
         const targetValue = event.target.value;
 
         switch (data_type) {
-
             case 'item_name':
                 this.setState({ item_name: targetValue });
                 break;

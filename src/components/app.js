@@ -11,7 +11,7 @@ import availableItemsButton from '../actions/available_items'
 import NavBar from './nav_bar'
 
 //import nested containters
-import Item from '../containers/item'
+import Items from '../containers/items'
 import PostForm from '../containers/post_form'
 
 class App extends Component {
@@ -73,7 +73,7 @@ class App extends Component {
         }
         else if(this.props.renderSelector == 'AVAILABLE_ITEMS' && this.state.user) {
             return (
-                <Item />
+                <Items />
             );         
         }
     }
