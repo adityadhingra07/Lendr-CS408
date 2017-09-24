@@ -57,12 +57,12 @@ class PostForm extends Component {
         }
     };
 
-   export onFormSubmit() {
+   onFormSubmit() {
         console.log(this.state);
-        // let itemsRef = firebase.app().database().ref().child('items');
-        // console.log("itemsRef: ", itemsRef);
-        // let item = itemsRef.push(this.state);
-        // console.log("item: ", item.key);
+        let itemsRef = firebase.app().database().ref().child('items');
+        console.log("itemsRef: ", itemsRef);
+        let item = itemsRef.push(this.state);
+        console.log("item: ", item.key);
     }
 
     render() {
