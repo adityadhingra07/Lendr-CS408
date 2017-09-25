@@ -1,0 +1,50 @@
+.container-fluid {
+    padding: 0px !important;
+}
+
+.nav-wrapper {
+    background: #000000; /* fallback for old browsers */
+    padding-left: 20px;
+}
+
+.nav-wrapper a {
+    text-decoration: none !important;
+    font-family: 'Roboto', sans-serif;  
+    font-weight: 100;  
+}
+
+#new-post-form, #item-holder {
+    max-width: 50%;
+}
+
+#form-holder {
+    padding: 40px !important;
+}
+
+#auth-button:hover {
+    background-color: rgb(229, 41, 85);
+    color: white;
+    font-weight: 200;
+}
+
+#nav-links:hover {
+    background-color: white;
+}
+
+#auth-img {
+    width: 160px;
+    height: auto;
+    background-color: black;    
+}
+
+.chip {
+    margin: 10px;
+}
+
+#nav-holder {
+    margin-bottom: 40px;
+}
+
+#app-logo {
+    font-family: 'Pacifico', cursive;
+}
