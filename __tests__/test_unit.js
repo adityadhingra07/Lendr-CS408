@@ -1,9 +1,26 @@
-export { onFormSubmit } from '../src/containers/post_form'
+import availableItemsButton from '../src/actions/available_items';
+import postItemButton from '../src/actions/post_item_button'
 
 describe('actions', () => {
-    console.log(onFormSubmit)
-    it('should create an action to add a todo', () => {
 
-        expect(onFormSubmit()).toEqual("1")
-    })
+    it('Clicking \'Available Items\' should generate correct redux action' , () => {
+        
+        const expectedAction = {
+            type: 'CLICKED_AVAILABLE_ITEMS',
+            payload: ""
+        }
+        
+        expect(availableItemsButton()).toEqual(expectedAction);
+    });
+
+    it('Clicking \'Post Items\' should generate correct redux action' , () => {
+        
+        const expectedAction = {
+            type: 'CLICKED_POST_ITEM',
+            payload: ""
+        }
+        
+        expect(postItemButton()).toEqual(expectedAction);
+    });
+
 })
