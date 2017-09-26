@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import firebase, {auth, provider} from '../firebase.js';
 
 //import post item click action
 import postItemButton from '../actions/post_item_button';
-import availableItemsButton from '../actions/available_items'
+import availableItemsButton from '../actions/available_items';
 
 //import components
-import NavBar from './nav_bar'
+import NavBar from './nav_bar';
 
 //import nested containters
-import Items from '../containers/items'
-import PostForm from '../containers/post_form'
+import Items from '../containers/items';
+import PostForm from '../containers/post_form';
 
 class App extends Component {
 

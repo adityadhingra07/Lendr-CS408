@@ -1,8 +1,8 @@
 // Import redux actions
 import availableItemsButton from '../src/actions/available_items';
-import postItemButton from '../src/actions/post_item_button'
+import postItemButton from '../src/actions/post_item_button';
 
-import centralReducer from '../src/reducers/reducer_central'
+import centralReducer from '../src/reducers/reducer_central';
 
 describe('redux-actions', () => {
 
