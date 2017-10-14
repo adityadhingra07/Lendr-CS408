@@ -12,7 +12,8 @@ class PostForm extends Component {
             item_type : "sell",
             item_price : "",
             item_rate : "hourly",
-            item_description : ""
+            item_description : "",
+            item_image : null
         };
 
     }
@@ -49,6 +50,14 @@ class PostForm extends Component {
                 break;
             case 'item_description':
                 this.setState({ item_description: targetValue });
+                break;
+            case 'item_image':
+                let item_image = document.getElementById('image').files[0];
+                let storage = firebase.app().storage().ref().child('images');
+                storage.put(item_image).then(function(snapshot) {
+                    console.log('Image file');
+                });
+                this.setState({ item_image: item_image });
                 break;
 
 
@@ -142,7 +151,7 @@ class PostForm extends Component {
                         <div className="file-field input-field col s5">
                             <div className="btn">
                                 <span>Upload Image</span>
-                                <input type="file"/>
+                                <input type="file" onChange={this.onInputChange.bind(this)} data-type="item_image" id="image"/>
                             </div>
                             <div className="file-path-wrapper">
                                 <input className="file-path validate" type="text"/>

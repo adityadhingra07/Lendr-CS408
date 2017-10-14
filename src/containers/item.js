@@ -14,7 +14,7 @@ class Item extends Component {
                 <div id="item-holder" className="col m12 offset-m3">
                     <div className="card grey lighten-2 z-depth-0">
                         <div className="card-image">
-                            <img/>
+                            <img src={item.item_image}/>
                         </div>
                         <div className="card-content black-text">
                             <span className="card-title">{item.item_name}</span>
