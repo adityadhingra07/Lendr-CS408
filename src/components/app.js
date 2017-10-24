@@ -6,12 +6,14 @@ import firebase, {auth, provider} from '../firebase.js';
 //import post item click action
 import postItemButton from '../actions/post_item_button';
 import availableItemsButton from '../actions/available_items';
+import userItemsButton from '../actions/user_items';
 
 //import components
 import NavBar from './nav_bar';
 
 //import nested containters
 import Items from '../containers/items';
+import UserItems from '../containers/user_items';
 import PostForm from '../containers/post_form';
 
 class App extends Component {
@@ -30,6 +32,7 @@ class App extends Component {
         this.renderSelection = this.renderSelection.bind(this);
         this.postItem = this.postItem.bind(this);
         this.availableItems = this.availableItems.bind(this);
+	    this.userItems = this.userItems.bind(this);
     }
 
     componentDidMount() {
@@ -65,16 +68,25 @@ class App extends Component {
         this.props.availableItemsButton();
     }
 
+    userItems() {
+    	this.props.userItemsButton();
+    }
+
     renderSelection() {
         if(this.props.renderSelector == 'POST_NEW_ITEM' && this.state.user) {
             return (
-                <PostForm />
+                <PostForm userName={this.state.user}/>
             );
         }
         else if(this.props.renderSelector == 'AVAILABLE_ITEMS' && this.state.user) {
             return (
                 <Items />
-            );         
+            );
+        }
+        else if(this.props.renderSelector == 'USER_ITEMS' && this.state.user) {
+            return (
+                <UserItems />
+            );
         }
     }
 
@@ -83,9 +95,10 @@ class App extends Component {
         return ({
             postItem: this.postItem,
             availableItems: this.availableItems,
+	        userItems: this.userItems,
             userInfo: this.state.user,
             stateLogin: this.login,
-            stateLogout: this.logout,
+            stateLogout: this.logout
         });
     }
     
@@ -113,7 +126,7 @@ const mapStateToProps = ({ centralReducer }) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ postItemButton, availableItemsButton }, dispatch);
+    return bindActionCreators({ postItemButton, availableItemsButton, userItemsButton }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

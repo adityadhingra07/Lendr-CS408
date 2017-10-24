@@ -14,6 +14,9 @@ const NavBar = (props) => {
                         <li>
                             <a id="nav-links" onClick={props.navBarProps.availableItems}> Available Items </a>
                         </li>
+					    <li>
+							<a id="nav-links" onClick={props.navBarProps.userItems}> My Items </a>
+					    </li>
                         <li>
                             {props.navBarProps.userInfo
                                 ?

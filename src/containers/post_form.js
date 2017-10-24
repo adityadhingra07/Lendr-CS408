@@ -7,7 +7,10 @@ class PostForm extends Component {
     constructor(props) {
         super(props);
 
+        console.log(this.props.userName.email);
+
         this.state = {
+            user_name: this.props.userName.email,
             item_name :  "",
             item_type : "sell",
             item_price : "",

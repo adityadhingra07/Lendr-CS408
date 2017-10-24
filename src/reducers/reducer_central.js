@@ -12,6 +12,10 @@ function centralReducer (state = mainInitialState, action) {
             return ({
                 renderSelector: 'AVAILABLE_ITEMS'
             });
+	case 'CLICKED_USER_ITEMS':
+	    return ({
+	    	renderSelector: 'USER_ITEMS'
+	    });
             
         default:
             return state
