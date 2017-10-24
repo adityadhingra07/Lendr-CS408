@@ -18,14 +18,13 @@ class UserItems extends Component {
 
 	fetchItems() {
 		let items = [];
-		let itemsRef = firebase.database().ref().child('items');
+		let itemsRef = firebase.database().ref()
+						  .child('items')
+						  .orderByChild("user_name")
+						  .equalTo(this.props.userName.email);
+
 		const ref = this;
-		/*new Firebase("https://examples-sql-queries.firebaseio.com/user")
-		.startAt('kato@firebase.com')
-		.endAt('kato@firebase.com')
-		.once('value', function(snap) {
-		   console.log('accounts matching email address', snap.val())
-		});*/
+
 		itemsRef.on('value', function (snapshot) {
 			snapshot.forEach(function (childSnapshot) {
 				items.push(childSnapshot.val());

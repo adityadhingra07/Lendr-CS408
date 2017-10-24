@@ -75,7 +75,7 @@ class App extends Component {
     renderSelection() {
         if(this.props.renderSelector == 'POST_NEW_ITEM' && this.state.user) {
             return (
-                <PostForm userName={this.state.user}/>
+                <PostForm userName={this.state.user} />
             );
         }
         else if(this.props.renderSelector == 'AVAILABLE_ITEMS' && this.state.user) {
@@ -85,7 +85,7 @@ class App extends Component {
         }
         else if(this.props.renderSelector == 'USER_ITEMS' && this.state.user) {
             return (
-                <UserItems />
+                <UserItems userName={this.state.user} />
             );
         }
     }
