@@ -3,19 +3,21 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
 import * as firebase from 'firebase';
 
-class PostForm extends Component {
+class EditItem extends Component {
     constructor(props) {
         super(props);
 
-        console.log(this.props.userName.email);
+	console.log("The place where this has to be: ", this.props.item);
+
+	let item = this.props.item;
 
         this.state = {
             user_name: this.props.userName.email,
-            item_name :  "",
-            item_type : "sell",
-            item_price : "",
-            item_rate : "hourly",
-            item_description : "",
+            item_name : item.item_name,
+            item_type : item.item_type,
+            item_price : item.item_price,
+            item_rate : item.item_rate,
+            item_description : item.item_description,
             item_image : null
         };
     }
@@ -70,19 +72,22 @@ class PostForm extends Component {
 
    onFormSubmit() {
         console.log(this.state);
-        let itemsRef = firebase.app().database().ref().child('items');
-        console.log("itemsRef: ", itemsRef);
-        let item = itemsRef.push(this.state);
-        console.log("item: ", item.key);
-
-	this.props.availableItems();
+	let ref = this;
+        let itemsRef = firebase.app().database().ref().child('items').child(this.props.item.item_id).update({
+		item_description: ref.state.item_description,
+		item_name: ref.state.item_name,
+		item_price: ref.state.item_price,
+		item_rate: ref.state.item_rate,
+		item_type: ref.state.item_type
+	});
+	this.props.userItems();
     }
 
     render() {
         return (
             <div id="form-holder" className="card animated fadeIn">
                 <div className="card-content">
-                    <span className="card-title">Add a new item for rent!</span>
+                    <span className="card-title">Edit your item:</span>
                     <div className="row">
                         <div className="input-field col s5">
                             <input
@@ -101,12 +106,12 @@ class PostForm extends Component {
                         <label htmlFor="">Type</label>
                         <p>
                             <input onChange={this.onInputChange.bind(this)}
-                            data-type="item_type_sell" id="sell" type="radio" name="item-type" value="sell" defaultChecked/>
+                            data-type="item_type_sell" id="sell" type="radio" name="item-type" value="sell" defaultChecked />
                             <label htmlFor="sell">To Sell</label>
                         </p>
                         <p>
                             <input onChange={this.onInputChange.bind(this)}
-                            data-type="item_type_rent" id="rent" type="radio" name="item-type" value="rent"/>
+                            data-type="item_type_rent" id="rent" type="radio" name="item-type" value="rent" />
                             <label htmlFor="rent">To Rent</label>
                         </p>
                     </div>
@@ -163,7 +168,7 @@ class PostForm extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <a onClick={this.onFormSubmit.bind(this)}  className="waves-effect waves-light btn">Post Item</a>
+                        <a onClick={this.onFormSubmit.bind(this)}  className="waves-effect waves-light btn">Update Item</a>
                     </div>
                 </div>
             </div>
@@ -179,5 +184,5 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({}, dispatch);
 }
 
-export const onFormSubmit = PostForm.prototype.onFormSubmit;
-export default connect(mapStateToProps, mapDispatchToProps)(PostForm)
+export const onFormSubmit = EditItem.prototype.onFormSubmit;
+export default connect(mapStateToProps, mapDispatchToProps)(EditItem)

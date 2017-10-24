@@ -23,6 +23,7 @@ class Items extends Component {
 		itemsRef.on('value', function(snapshot) {
 			snapshot.forEach(function(childSnapshot) {
 				items.push(childSnapshot.val());
+				console.log(childSnapshot.val());
 				ref.setState((prevState) => { items: prevState.item_list.push(childSnapshot.val())  });
 			});
 		});
@@ -36,7 +37,7 @@ class Items extends Component {
 					<div>
 					{ this.state.item_list.map(item => <Item key={item.item_name} item = {item} />) }
 					</div>
-					);
+			       );
 		}
 	}
 }
