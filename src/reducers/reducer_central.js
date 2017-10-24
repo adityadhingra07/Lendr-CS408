@@ -1,5 +1,6 @@
 const mainInitialState = {
-    renderSelector: 'AVAILABLE_ITEMS'
+    renderSelector: 'AVAILABLE_ITEMS',
+    edit_item: {}
 }
 
 function centralReducer (state = mainInitialState, action) {
@@ -15,6 +16,13 @@ function centralReducer (state = mainInitialState, action) {
 	case 'CLICKED_USER_ITEMS':
 	    return ({
 	    	renderSelector: 'USER_ITEMS'
+	    });
+	case 'CLICKED_EDIT_ITEM':
+	    console.log("In central reducer");
+	    console.log("payload item", action.payload);
+	    return ({
+	    	renderSelector: 'EDIT_ITEM',
+		edit_item: action.payload
 	    });
             
         default:

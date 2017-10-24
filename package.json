@@ -2,7 +2,6 @@
   "name": "lendr",
   "version": "1.0.0",
   "main": "index.js",
-
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "jest",
@@ -28,6 +27,7 @@
     "babel-preset-stage-1": "^6.1.18",
     "firebase": "^4.3.1",
     "firebaseui": "^2.3.0",
+    "font-awesome": "^4.7.0",
     "lodash": "^3.10.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",

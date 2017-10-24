@@ -7,6 +7,7 @@ import firebase, {auth, provider} from '../firebase.js';
 import postItemButton from '../actions/post_item_button';
 import availableItemsButton from '../actions/available_items';
 import userItemsButton from '../actions/user_items';
+import editItemButton from '../actions/edit_item_button';
 
 //import components
 import NavBar from './nav_bar';
@@ -15,6 +16,7 @@ import NavBar from './nav_bar';
 import Items from '../containers/items';
 import UserItems from '../containers/user_items';
 import PostForm from '../containers/post_form';
+import EditItem from '../containers/edit_item';
 
 class App extends Component {
 
@@ -32,7 +34,8 @@ class App extends Component {
         this.renderSelection = this.renderSelection.bind(this);
         this.postItem = this.postItem.bind(this);
         this.availableItems = this.availableItems.bind(this);
-	    this.userItems = this.userItems.bind(this);
+	this.userItems = this.userItems.bind(this);
+	this.editItem = this.editItem.bind(this);
     }
 
     componentDidMount() {
@@ -64,6 +67,10 @@ class App extends Component {
         this.props.postItemButton();
     }
 
+    editItem(item) {
+    	this.props.editItemButton(item);
+    }
+
     availableItems() {
         this.props.availableItemsButton();
     }
@@ -73,29 +80,34 @@ class App extends Component {
     }
 
     renderSelection() {
-        if(this.props.renderSelector == 'POST_NEW_ITEM' && this.state.user) {
+        if (this.props.renderSelector == 'POST_NEW_ITEM' && this.state.user) {
             return (
                 <PostForm userName={this.state.user} />
             );
         }
-        else if(this.props.renderSelector == 'AVAILABLE_ITEMS' && this.state.user) {
+        else if (this.props.renderSelector == 'AVAILABLE_ITEMS' && this.state.user) {
             return (
                 <Items />
             );
         }
-        else if(this.props.renderSelector == 'USER_ITEMS' && this.state.user) {
+        else if (this.props.renderSelector == 'USER_ITEMS' && this.state.user) {
             return (
-                <UserItems userName={this.state.user} />
+                <UserItems userName={this.state.user} edit={this.editItem} />
             );
         }
+	else if (this.props.renderSelector == 'EDIT_ITEM' && this.state.user) {
+	    return (
+		<EditItem userName={this.state.user} item={this.props.edit_item} userItems={this.userItems} /> 
+	    );
+	}
     }
 
-    //Collect navBarProps into single object to pass as props
+    // Collect navBarProps into single object to pass as props
     navBarProps() {
         return ({
             postItem: this.postItem,
             availableItems: this.availableItems,
-	        userItems: this.userItems,
+	    userItems: this.userItems,
             userInfo: this.state.user,
             stateLogin: this.login,
             stateLogout: this.logout
@@ -121,12 +133,13 @@ class App extends Component {
 
 const mapStateToProps = ({ centralReducer }) => {
     return {
-        renderSelector: centralReducer.renderSelector
+        renderSelector: centralReducer.renderSelector,
+	edit_item: centralReducer.edit_item
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ postItemButton, availableItemsButton, userItemsButton }, dispatch);
+    return bindActionCreators({ postItemButton, availableItemsButton, userItemsButton, editItemButton }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
