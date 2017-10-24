@@ -18,7 +18,6 @@ class PostForm extends Component {
             item_description : "",
             item_image : null
         };
-
     }
 
     onInputChange = (event) => {
@@ -75,6 +74,8 @@ class PostForm extends Component {
         console.log("itemsRef: ", itemsRef);
         let item = itemsRef.push(this.state);
         console.log("item: ", item.key);
+
+	this.props.availableItems();
     }
 
     render() {
