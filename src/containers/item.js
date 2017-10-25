@@ -1,20 +1,35 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
+import * as firebase from 'firebase';
 
 class Item extends Component {
     constructor(props) {
         super(props);
+        this.state = { image_url: "" }
+        this.getImgURL = this.getImgURL.bind(this);
+    }
+
+    getImgURL() {
+        debugger;
+        let ref = this;
+        let storage = firebase.app().storage().ref().child('images/' + this.props.item.item_image);
+        storage.getDownloadURL().then(function (url) {
+            ref.setState({ image_url: url });
+        }).catch(function (error) {
+            console.log(error);
+        });
     }
 
     render() {
 	const item = this.props.item;
+	this.getImgURL();
         return(
             <div className="row animated fadeIn">
                 <div id="item-holder" className="col m12 offset-m3">
                     <div className="card grey lighten-2 z-depth-0">
                         <div className="card-image">
-                            <img src={item.item_image}/>
+                            <img src={this.state.image_url}/>
                         </div>
                         <div className="card-content black-text">
                             <span className="card-title">{item.item_name}</span>

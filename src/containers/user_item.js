@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
+import * as firebase from 'firebase';
 
 class UserItem extends Component {
     constructor(props) {
         super(props);
-
-	this.editItem = this.editItem.bind(this);
-
-	console.log(this.props.item, "item");
+        this.state = { image_url: "" }
+	    this.editItem = this.editItem.bind(this);
+	    this.getImgURL = this.getImgURL.bind(this);
+	    console.log(this.props.item, "item");
     }
 
     editItem() {
@@ -16,15 +17,27 @@ class UserItem extends Component {
     	this.props.editItem(this.props.item.item_id);
     }
 
+    getImgURL() {
+        debugger;
+        let ref = this;
+        let storage = firebase.app().storage().ref().child('images/' + this.props.item.item_image);
+        storage.getDownloadURL().then(function (url) {
+            ref.setState({ image_url: url });
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+
     render() {
 	const item = this.props.item;
 	const edit = this.editItem;
+	this.getImgURL();
         return(
             <div className="row animated fadeIn">
                 <div id="item-holder" className="col m12 offset-m3">
                     <div className="card grey lighten-2 z-depth-0">
                         <div className="card-image">
-                            <img src={item.item_image}/>
+                            <img src={this.state.image_url}/>
                         </div>
                         <div className="card-content black-text">
 			    <span style={{float:'right'}}> <i className="fa fa-cog" style={{cursor:"pointer"}} onClick={edit}></i> </span>

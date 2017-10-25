@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
 import * as firebase from 'firebase';
+import uuid from 'uuid';
 
 class PostForm extends Component {
     constructor(props) {
@@ -54,12 +55,8 @@ class PostForm extends Component {
                 this.setState({ item_description: targetValue });
                 break;
             case 'item_image':
-                let item_image = document.getElementById('image').files[0];
-                let storage = firebase.app().storage().ref().child('images');
-                storage.put(item_image).then(function(snapshot) {
-                    console.log('Image file');
-                });
-                this.setState({ item_image: item_image });
+                let image_name = uuid.v1();
+                this.setState({ item_image: image_name });
                 break;
 
 
@@ -69,6 +66,13 @@ class PostForm extends Component {
     };
 
    onFormSubmit() {
+       debugger;
+        let item_image = document.getElementById('image').files[0];
+        let storage = firebase.app().storage().ref().child('images/' + this.state.item_image);
+            storage.put(item_image).then(function(snapshot) {
+                console.log('Image Uploaded');
+            });
+
         console.log(this.state);
         let itemsRef = firebase.app().database().ref().child('items');
         console.log("itemsRef: ", itemsRef);
