@@ -72,15 +72,15 @@ class EditItem extends Component {
 
    onFormSubmit() {
         console.log(this.state);
-	let ref = this;
+	    let ref = this;
         let itemsRef = firebase.app().database().ref().child('items').child(this.props.item.item_id).update({
-		item_description: ref.state.item_description,
-		item_name: ref.state.item_name,
-		item_price: ref.state.item_price,
-		item_rate: ref.state.item_rate,
-		item_type: ref.state.item_type
-	});
-	this.props.userItems();
+            item_description: ref.state.item_description,
+            item_name: ref.state.item_name,
+            item_price: ref.state.item_price,
+            item_rate: ref.state.item_rate,
+            item_type: ref.state.item_type
+	    });
+	    this.props.userItems();
     }
 
     render() {

@@ -16,7 +16,8 @@ class PostForm extends Component {
             item_price : "",
             item_rate : "hourly",
             item_description : "",
-            item_image : null
+            item_image : null,
+	    item_status: "available"
         };
     }
 
