@@ -59,8 +59,6 @@ class Item extends Component {
                             <p> {item.item_description} </p>
                         </div>
                         <div className="card-action">
-                            {/*TODO:*/}
-                            {/*<button className="waves-effect waves-light btn z-depth-0" onClick={this.rentItem}>{buttonTitle}</button>*/}                            
                             {this.buttonRender()}
                         </div>
                     </div>

@@ -46,7 +46,7 @@ class Items extends Component {
 						item_rented_by: this.props.userName.email
 					});
 
-					fetchItems();
+					this.fetchItems();
 
 				} else {
 
@@ -56,7 +56,7 @@ class Items extends Component {
 					
 					let itemsRef = firebase.app().database().ref().child('items').child(itemInfo.item_id).child("waitlist").push(this.props.userName.email);	
 					
-					fetchItems();					
+					this.fetchItems();					
 				}
 		}
 
