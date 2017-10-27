@@ -43,7 +43,6 @@ class Item extends Component {
     render() {
 		const item = this.props.item;
 		console.log('Inside here: ', item);
-        // let buttonTitle = (item.item_status == 'available') ? 'Rent' : 'Waitlist';
 
         return(
             <div className="row animated fadeIn">
@@ -52,7 +51,7 @@ class Item extends Component {
                         <div className="card-image">
                             <img src={item.item_image}/>
                         </div>
-			<span style={{float: 'right'}}> {item.item_status}  </span>
+			{/*<span style={{float: 'right'}}> {item.item_status}  </span>*/}
                         <div className="card-content black-text">
                             <span className="card-title">{item.item_name}</span>
                             <blockquote>Price: ${item.item_price} {item.item_rate} </blockquote>
