@@ -7,10 +7,7 @@ class EditItem extends Component {
     constructor(props) {
         super(props);
 
-	console.log("The place where this has to be: ", this.props.item);
-
-	let item = this.props.item;
-
+				let item = this.props.item;
         this.state = {
             user_name: this.props.userName.email,
             item_name : item.item_name,
