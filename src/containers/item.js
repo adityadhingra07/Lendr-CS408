@@ -6,7 +6,8 @@ class Item extends Component {
     constructor(props) {
         super(props);
 
-		this.rentItem = this.rentItem.bind(this);
+        this.rentItem = this.rentItem.bind(this);
+		this.buttonRender = this.buttonRender.bind(this);        
     }
 
 	rentItem() {
@@ -14,12 +15,35 @@ class Item extends Component {
 		let itemInfo = { item_id: this.props.item.item_id,
 					     item_status: this.props.item.item_status }
 		this.props.rentItem(itemInfo);
-	}
+    }
+    
+    buttonRender() {
+        const userName = this.props.userName.email
+        const item = this.props.item;
+        const buttonName = "Rent"
+        if(item.item_status == 'available') {
+            return (
+                <button className="waves-effect waves-light btn z-depth-0" onClick={this.rentItem}> Rent </button>                
+            );
+        }
+        else {
+            if(item.item_rented_by == userName) {
+                return (
+                    <button className="waves-effect waves-light btn z-depth-0" onClick={this.returnItem}> Return Item </button>                
+                );
+            }
+            else {
+                return (
+                    <button className="waves-effect waves-light btn z-depth-0" onClick={this.rentItem}> Waitlist </button>                
+                );
+            }
+        }
+    }
 
     render() {
 		const item = this.props.item;
-		console.log('Inside here: ', item.item_status);
-		let buttonTitle = (item.item_status == 'available') ? 'Rent' : 'Waitlist';
+		console.log('Inside here: ', item);
+        // let buttonTitle = (item.item_status == 'available') ? 'Rent' : 'Waitlist';
 
         return(
             <div className="row animated fadeIn">
@@ -35,7 +59,9 @@ class Item extends Component {
                             <p> {item.item_description} </p>
                         </div>
                         <div className="card-action">
-                            <button className="waves-effect waves-light btn z-depth-0" onClick={this.rentItem}>{buttonTitle}</button>
+                            {/*TODO:*/}
+                            {/*<button className="waves-effect waves-light btn z-depth-0" onClick={this.rentItem}>{buttonTitle}</button>*/}                            
+                            {this.buttonRender()}
                         </div>
                     </div>
                 </div>

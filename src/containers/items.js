@@ -34,20 +34,29 @@ class Items extends Component {
 		rentItem(itemInfo) {
 				console.log("In parent rent item", itemInfo);
 				if (itemInfo.item_status == 'available') {
-						console.log('REntPLZ');
-						// Change the status of the item here
-						// Proceed by updating the local state first and then push
-						// the changes to Firebase
-						let item_l = this.state.item_list;
-						this.setState({ item_list: [] });
+					console.log('REntPLZ');
+					// Change the status of the item here
+					// Proceed by updating the local state first and then push
+					// the changes to Firebase
+					let item_l = this.state.item_list;
+					this.setState({ item_list: [] });
 
-						let itemsRef = firebase.app().database().ref().child('items').child(itemInfo.item_id).update({
-								item_status: "not_available"
-						});
+					let itemsRef = firebase.app().database().ref().child('items').child(itemInfo.item_id).update({
+						item_status: "not_available",
+						item_rented_by: this.props.userName.email
+					});
 
-						fetchItems();
+					fetchItems();
+
 				} else {
-						console.log('Waitlist!');
+
+					//Waitlist
+
+					this.setState({ item_list: [] });
+					
+					let itemsRef = firebase.app().database().ref().child('items').child(itemInfo.item_id).child("waitlist").push(this.props.userName.email);	
+					
+					fetchItems();					
 				}
 		}
 
@@ -58,7 +67,7 @@ class Items extends Component {
 						console.log('It comes here', this.state.item_list);
 						return (
 										<div>
-										{ this.state.item_list.map(item => <Item key={item.item_id} item={item} rentItem={this.rentItem} />) }
+										{ this.state.item_list.map(item => <Item userName={this.props.userName} key={item.item_id} item={item} rentItem={this.rentItem} />) }
 										</div>
 							   );
 				}
