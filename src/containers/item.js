@@ -8,6 +8,9 @@ class Item extends Component {
         super(props);
         this.state = { image_url: "" }
         this.getImgURL = this.getImgURL.bind(this);
+        this.rentItem = this.rentItem.bind(this);
+        this.buttonRender = this.buttonRender.bind(this);
+			  this.returnItem = this.returnItem.bind(this);        
     }
 
     getImgURL() {
@@ -20,9 +23,45 @@ class Item extends Component {
         });
     }
 
+		rentItem() {
+				console.log("Renting Item");
+				let itemInfo = { item_id: this.props.item.item_id,
+					     item_status: this.props.item.item_status }
+		    this.props.rentItem(itemInfo);
+    }
+
+    //TODO:
+    returnItem() {
+
+    }
+    
+    buttonRender() {
+        const userName = this.props.userName.email
+        const item = this.props.item;
+        const buttonName = "Rent"
+        if(item.item_status == 'available') {
+            return (
+                <button className="waves-effect waves-light btn z-depth-0" onClick={this.rentItem}> Rent </button>                
+            );
+        }
+        else {
+            if(item.item_rented_by == userName) {
+                return (
+                    <button className="waves-effect waves-light btn z-depth-0" onClick={this.returnItem}> Return Item </button>                
+                );
+            }
+            else {
+                return (
+                    <button className="waves-effect waves-light btn z-depth-0" onClick={this.rentItem}> Waitlist </button>                
+                );
+            }
+        }
+    }
+
     render() {
-	const item = this.props.item;
-	this.getImgURL();
+				const item = this.props.item;
+				this.getImgURL();
+		
         return(
             <div className="row animated fadeIn">
                 <div id="item-holder" className="col m12 offset-m3">
@@ -30,13 +69,14 @@ class Item extends Component {
                         <div className="card-image">
                             <img className="responsive-img" id="item_image" src={this.state.image_url}/>
                         </div>
+			{/*<span style={{float: 'right'}}> {item.item_status}  </span>*/}
                         <div className="card-content black-text">
                             <span className="card-title">{item.item_name}</span>
                             <blockquote>Price: ${item.item_price} {item.item_rate} </blockquote>
                             <p> {item.item_description} </p>
                         </div>
                         <div className="card-action">
-                            <button className="waves-effect waves-light btn z-depth-0">Rent</button>
+                            {this.buttonRender()}
                         </div>
                     </div>
                 </div>
