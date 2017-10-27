@@ -34,8 +34,8 @@ class App extends Component {
         this.renderSelection = this.renderSelection.bind(this);
         this.postItem = this.postItem.bind(this);
         this.availableItems = this.availableItems.bind(this);
-	this.userItems = this.userItems.bind(this);
-	this.editItem = this.editItem.bind(this);
+	    this.userItems = this.userItems.bind(this);
+	    this.editItem = this.editItem.bind(this);
     }
 
     componentDidMount() {

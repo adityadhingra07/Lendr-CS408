@@ -26,9 +26,9 @@ class Item extends Component {
         return(
             <div className="row animated fadeIn">
                 <div id="item-holder" className="col m12 offset-m3">
-                    <div className="card grey lighten-2 z-depth-0">
+                    <div className="card grey lighten-2">
                         <div className="card-image">
-                            <img src={this.state.image_url}/>
+                            <img className="responsive-img" id="item_image" src={this.state.image_url}/>
                         </div>
                         <div className="card-content black-text">
                             <span className="card-title">{item.item_name}</span>
