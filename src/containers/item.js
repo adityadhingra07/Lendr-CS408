@@ -7,7 +7,8 @@ class Item extends Component {
         super(props);
 
         this.rentItem = this.rentItem.bind(this);
-		this.buttonRender = this.buttonRender.bind(this);        
+        this.buttonRender = this.buttonRender.bind(this);
+		this.returnItem = this.returnItem.bind(this);        
     }
 
 	rentItem() {
@@ -15,6 +16,11 @@ class Item extends Component {
 		let itemInfo = { item_id: this.props.item.item_id,
 					     item_status: this.props.item.item_status }
 		this.props.rentItem(itemInfo);
+    }
+
+    //TODO:
+    returnItem() {
+
     }
     
     buttonRender() {
