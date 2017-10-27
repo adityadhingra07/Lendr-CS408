@@ -87,7 +87,7 @@ class App extends Component {
         }
         else if (this.props.renderSelector == 'AVAILABLE_ITEMS' && this.state.user) {
             return (
-                <Items />
+                <Items userName={this.state.user}/>
             );
         }
         else if (this.props.renderSelector == 'USER_ITEMS' && this.state.user) {
