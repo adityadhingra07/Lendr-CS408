@@ -5,6 +5,7 @@ import * as firebase from 'firebase';
 
 class EditItem extends Component {
     constructor(props) {
+        debugger;
         super(props);
 
 				let item = this.props.item;
@@ -14,8 +15,19 @@ class EditItem extends Component {
             item_price : item.item_price,
             item_rate : item.item_rate,
             item_description : item.item_description,
-            item_image : null
+            item_image : item.item_image,
+            image_change : false
         };
+    }
+
+    getImgURL(item_image) {
+        let ref = this;
+        let storage = firebase.app().storage().ref().child('images/' + item_image);
+        storage.getDownloadURL().then(function (url) {
+            ref.setState({ image_url: url });
+        }).catch(function (error) {
+            console.log(error);
+        });
     }
 
     onInputChange = (event) => {
@@ -46,12 +58,8 @@ class EditItem extends Component {
                 this.setState({ item_description: targetValue });
                 break;
             case 'item_image':
-                let item_image = document.getElementById('image').files[0];
-                let storage = firebase.app().storage().ref().child('images');
-                storage.put(item_image).then(function(snapshot) {
-                    console.log('Image file');
-                });
-                this.setState({ item_image: item_image });
+                let image_name = this.state.item_image;
+                this.setState({ item_image: image_name, image_change: true });
                 break;
 
             default:
@@ -60,6 +68,15 @@ class EditItem extends Component {
     };
 
    onFormSubmit() {
+
+       if(this.state.image_change) {
+           let item_image = document.getElementById('image').files[0];
+           let storage = firebase.app().storage().ref().child('images/' + this.state.item_image);
+           storage.put(item_image).then(function(snapshot) {
+               console.log('Image Uploaded');
+           });
+       }
+
         console.log(this.state);
 	    let ref = this;
         let itemsRef = firebase.app().database().ref().child('items').child(this.props.item.item_id).update({
