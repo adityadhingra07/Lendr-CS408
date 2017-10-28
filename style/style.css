@@ -56,3 +56,11 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+#item_status_available{
+    background: #23cb59;
+}
+#item_status_unavailable{
+    background: #cb3d55;
+    color: white;
+}

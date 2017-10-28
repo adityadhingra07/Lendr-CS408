@@ -61,6 +61,15 @@ class Item extends Component {
     render() {
 				const item = this.props.item;
 				this.getImgURL();
+				let status = "Available";
+				let statusID = "item_status_available";
+				if (item.item_status === "available") {
+                    status = "Available";
+                    statusID = "item_status_available";
+                } else {
+				    status = "Not Available";
+                    statusID = "item_status_unavailable";
+                }
 		
         return(
             <div className="row animated fadeIn">
@@ -69,7 +78,7 @@ class Item extends Component {
                         <div className="card-image">
                             <img className="responsive-img" id="item_image" src={this.state.image_url}/>
                         </div>
-			{/*<span style={{float: 'right'}}> {item.item_status}  </span>*/}
+			            <span id={statusID} className="chip" style={{float: 'right'}}> {status}  </span>
                         <div className="card-content black-text">
                             <span className="card-title">{item.item_name}</span>
                             <blockquote>Price: ${item.item_price} {item.item_rate} </blockquote>
