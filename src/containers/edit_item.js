@@ -14,8 +14,7 @@ class EditItem extends Component {
             item_type : item.item_type,
             item_price : item.item_price,
             item_rate : item.item_rate,
-            item_description : item.item_description,
-            item_image : null
+            item_description : item.item_description
         };
     }
 
@@ -52,15 +51,6 @@ class EditItem extends Component {
             case 'item_description':
                 this.setState({ item_description: targetValue });
                 break;
-            case 'item_image':
-                let item_image = document.getElementById('image').files[0];
-                let storage = firebase.app().storage().ref().child('images');
-                storage.put(item_image).then(function(snapshot) {
-                    console.log('Image file');
-                });
-                this.setState({ item_image: item_image });
-                break;
-
 
             default:
                 break;

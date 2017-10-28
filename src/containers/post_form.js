@@ -51,7 +51,7 @@ class PostForm extends Component {
                 this.setState({ item_description: targetValue });
                 break;
             case 'item_image':
-                let image_name = uuid.v1();
+                let image_name = this.state.item_name;
                 this.setState({ item_image: image_name });
                 break;
 
