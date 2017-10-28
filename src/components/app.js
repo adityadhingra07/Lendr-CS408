@@ -34,8 +34,8 @@ class App extends Component {
         this.renderSelection = this.renderSelection.bind(this);
         this.postItem = this.postItem.bind(this);
         this.availableItems = this.availableItems.bind(this);
-	    this.userItems = this.userItems.bind(this);
-	    this.editItem = this.editItem.bind(this);
+				this.userItems = this.userItems.bind(this);
+	    	this.editItem = this.editItem.bind(this);
     }
 
     componentDidMount() {
@@ -76,6 +76,7 @@ class App extends Component {
     }
 
     userItems() {
+			console.log("UserItems display plz");
     	this.props.userItemsButton();
     }
 
@@ -107,7 +108,7 @@ class App extends Component {
         return ({
             postItem: this.postItem,
             availableItems: this.availableItems,
-	    userItems: this.userItems,
+						userItems: this.userItems,
             userInfo: this.state.user,
             stateLogin: this.login,
             stateLogout: this.logout
