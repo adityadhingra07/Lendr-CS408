@@ -28,30 +28,30 @@ class UserItem extends Component {
     }
 
     render() {
-	const item = this.props.item;
-	const edit = this.editItem;
-	this.getImgURL();
-        return(
-            <div className="row animated fadeIn">
-                <div id="item-holder" className="col m12 offset-m3">
-                    <div className="card grey lighten-2">
-                        <div className="card-image">
-                            <img className="responsive-img" id="item_image" src={this.state.image_url}/>
-                        </div>
-                        <div className="card-content black-text">
-			    <span style={{float:'right'}}> <i className="fa fa-cog" style={{cursor:"pointer"}} onClick={edit}></i> </span>
-                            <span className="card-title">{item.item_name}</span>
-                            <blockquote>Price: ${item.item_price} {item.item_rate} </blockquote>
-                            <p> {item.item_description} </p>
-                        </div>
-                        <div className="card-action">
-                            <button className="waves-effect waves-light btn z-depth-0">Rent</button>
-                        </div>
-                    </div>
-                </div>
+			const item = this.props.item;
+			const edit = this.editItem;
+			//this.getImgURL();
+      return(
+      	<div className="row animated fadeIn">
+        	<div id="item-holder" className="col m12 offset-m3">
+          	<div className="card grey lighten-2">
+            	<div className="card-image">
+              	<img className="responsive-img" id="item_image" src={this.state.image_url}/>
+              </div>
+              <div className="card-content black-text">
+			    			<span style={{float:'right'}}> <i className="fa fa-cog" style={{cursor:"pointer"}} onClick={edit}></i> </span>
+                <span className="card-title">{item.item_name}</span>
+                <blockquote>Price: ${item.item_price} {item.item_rate} </blockquote>
+                <p> {item.item_description} </p>
+              </div>
+              <div className="card-action">
+              	<button className="waves-effect waves-light btn z-depth-0">Rent</button>
+              </div>
             </div>
-        );
-    }
+          </div>
+        </div>
+      );
+		}
 }
 
 const mapStateToProps = (state) => {
