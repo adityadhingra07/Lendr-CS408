@@ -13,7 +13,7 @@ class EditItem extends Component {
             user_name: this.props.userName.email,
             item_name : item.item_name,
             item_price : item.item_price,
-            item_rate : item.item_rate,
+            item_rate : "hourly",
             item_description : item.item_description,
             item_image : item.item_image,
             image_change : false
