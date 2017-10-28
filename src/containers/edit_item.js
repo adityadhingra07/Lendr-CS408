@@ -11,7 +11,6 @@ class EditItem extends Component {
         this.state = {
             user_name: this.props.userName.email,
             item_name : item.item_name,
-            item_type : item.item_type,
             item_price : item.item_price,
             item_rate : item.item_rate,
             item_description : item.item_description,
@@ -27,12 +26,6 @@ class EditItem extends Component {
         switch (data_type) {
             case 'item_name':
                 this.setState({ item_name: targetValue });
-                break;
-            case 'item_type_sell':
-                this.setState({ item_type: targetValue }); 
-                break;           
-            case 'item_type_rent':
-                this.setState({ item_type: targetValue });
                 break;
             case 'item_price':
                 this.setState({ item_price: targetValue });
@@ -61,7 +54,6 @@ class EditItem extends Component {
                 this.setState({ item_image: item_image });
                 break;
 
-
             default:
                 break;
         }
@@ -74,8 +66,7 @@ class EditItem extends Component {
             item_description: ref.state.item_description,
             item_name: ref.state.item_name,
             item_price: ref.state.item_price,
-            item_rate: ref.state.item_rate,
-            item_type: ref.state.item_type
+            item_rate: ref.state.item_rate
 	    });
 	    this.props.userItems();
     }
@@ -98,19 +89,6 @@ class EditItem extends Component {
                                 required/>
                             <label htmlFor="item-name">Item Name</label>
                         </div>
-                    </div>
-                    <div className="row">
-                        <label htmlFor="">Type</label>
-                        <p>
-                            <input onChange={this.onInputChange.bind(this)}
-                            data-type="item_type_sell" id="sell" type="radio" name="item-type" value="sell" defaultChecked />
-                            <label htmlFor="sell">To Sell</label>
-                        </p>
-                        <p>
-                            <input onChange={this.onInputChange.bind(this)}
-                            data-type="item_type_rent" id="rent" type="radio" name="item-type" value="rent" />
-                            <label htmlFor="rent">To Rent</label>
-                        </p>
                     </div>
                     <div className="row">
                         <div className="input-field col s5">
