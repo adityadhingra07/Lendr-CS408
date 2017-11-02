@@ -61,7 +61,6 @@ class PostForm extends Component {
     };
 
    onFormSubmit() {
-       debugger;
         let item_image = document.getElementById('image').files[0];
         let storage = firebase.app().storage().ref().child('images/' + this.state.item_image);
             storage.put(item_image).then(function(snapshot) {
@@ -79,9 +78,8 @@ class PostForm extends Component {
 
     render() {
         return (
-            <div id="form-holder" className="card animated fadeIn">
-                <div className="card-content">
-                    <span className="card-title" id="postItemHeading"><b>ADD A NEW ITEM FOR RENT.</b></span>
+            <div id="form-holder">
+                    <span id="postItemHeading"><b>ADD A NEW ITEM FOR RENT.</b></span>
                     <div className="row">
                         <div className="input-field col s5">
                             <i className="material-icons prefix">loyalty</i>
@@ -151,7 +149,6 @@ class PostForm extends Component {
                             <a onClick={this.onFormSubmit.bind(this)}  className="waves-effect waves-light btn">Post Item</a>
                         </div>
                     </div>
-                </div>
             </div>
         );
     }
