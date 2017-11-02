@@ -81,9 +81,10 @@ class PostForm extends Component {
         return (
             <div id="form-holder" className="card animated fadeIn">
                 <div className="card-content">
-                    <span className="card-title">Add a new item for rent!</span>
+                    <span className="card-title" id="postItemHeading"><b>ADD A NEW ITEM FOR RENT.</b></span>
                     <div className="row">
                         <div className="input-field col s5">
+                            <i className="material-icons prefix">loyalty</i>
                             <input
                                 onChange={this.onInputChange.bind(this)}
                                 data-type="item_name"
@@ -106,27 +107,24 @@ class PostForm extends Component {
                     </div>
                     <div className="rate">
                         <div className="row">
-                            <label htmlFor="">Rate</label>
-                            <p>
+                            <div id="col s5">
+                                <span htmlFor="rate">Rate:&nbsp;&nbsp;&nbsp;</span>
                                 <input onChange={this.onInputChange.bind(this)}
                                 data-type="item_rent_hourly" id="hourly" type="radio" name="rate" value="hourly" defaultChecked/>
                                 <label htmlFor="hourly">Hourly</label>
-                            </p>
-                            <p>
+                                &nbsp;&nbsp;
                                 <input onChange={this.onInputChange.bind(this)}
                                 data-type="item_rent_daily" id="daily" type="radio" name="rate" value="daily"/>
                                 <label htmlFor="daily">Daily</label>
-                            </p>
-                            <p>
+                                &nbsp;&nbsp;
                                 <input onChange={this.onInputChange.bind(this)}
                                 data-type="item_rent_weekly" id="weekly" type="radio" name="rate" value="weekly"/>
                                 <label htmlFor="weekly">Weekly</label>
-                            </p>
-                            <p>
+                                &nbsp;&nbsp;
                                 <input onChange={this.onInputChange.bind(this)}
                                 data-type="item_rent_monthly" id="monthly" type="radio" name="rate" value="monthly"/>
                                 <label htmlFor="monthly">Monthly</label>
-                            </p>
+                            </div>
                         </div>
                     </div>
                     <div className="row">
@@ -139,7 +137,7 @@ class PostForm extends Component {
                     </div>
                     <div className="row">
                         <div className="file-field input-field col s5">
-                            <div className="btn">
+                            <div className="waves-effect waves-light btn">
                                 <span>Upload Image</span>
                                 <input type="file" onChange={this.onInputChange.bind(this)} data-type="item_image" id="image"/>
                             </div>
@@ -149,7 +147,9 @@ class PostForm extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <a onClick={this.onFormSubmit.bind(this)}  className="waves-effect waves-light btn">Post Item</a>
+                        <div className="col s5">
+                            <a onClick={this.onFormSubmit.bind(this)}  className="waves-effect waves-light btn">Post Item</a>
+                        </div>
                     </div>
                 </div>
             </div>

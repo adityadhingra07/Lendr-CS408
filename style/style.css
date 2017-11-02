@@ -10,7 +10,7 @@
 .nav-wrapper a {
     text-decoration: none !important;
     font-family: 'Roboto', sans-serif;  
-    font-weight: 100;  
+    font-weight: 100;
 }
 
 #new-post-form, #item-holder {
@@ -63,4 +63,8 @@
 #item_status_unavailable{
     background: #cb3d55;
     color: white;
+}
+#postItemHeading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 35px;
 }

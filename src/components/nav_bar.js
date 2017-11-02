@@ -4,7 +4,7 @@ const NavBar = (props) => {
 
     return(
         <div id="nav-holder" className="animated fadeInDown">
-            <nav> 
+            <nav>
                 <div className="nav-wrapper">
                     <a id="app-logo" href="#" className="brand-logo">Lendr</a>
                     <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
