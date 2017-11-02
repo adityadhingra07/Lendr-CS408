@@ -5,15 +5,15 @@ import * as firebase from 'firebase';
 
 class UserItem extends Component {
     constructor(props) {
-        super(props);
-        this.state = { image_url: "" }
-	    this.editItem = this.editItem.bind(this);
+      super(props);
+      this.state = { image_url: "" }
+		  this.editItem = this.editItem.bind(this);
 	    this.getImgURL = this.getImgURL.bind(this);
 	    console.log(this.props.item, "item");
     }
 
     editItem() {
-	console.log("Child editItem");
+			console.log("Child editItem");
     	this.props.editItem(this.props.item.item_id);
     }
 
