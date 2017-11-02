@@ -67,13 +67,13 @@ class PostForm extends Component {
                 console.log('Image Uploaded');
             });
 
-        console.log(this.state);
         let itemsRef = firebase.app().database().ref().child('items');
-        console.log("itemsRef: ", itemsRef);
-        let item = itemsRef.push(this.state);
-        console.log("item: ", item.key);
-
-			  this.props.availableItems();
+				if (this.state.item_name == "") {
+					console.log("no name posted");
+				} else {
+        	let item = itemsRef.push(this.state);
+			    this.props.availableItems();
+				}
     }
 
     render() {
