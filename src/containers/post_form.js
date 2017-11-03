@@ -71,10 +71,23 @@ class PostForm extends Component {
         return check;
     }
 
+    validateImage() {
+        let image_name = document.getElementById('image_name').value;
+        if (image_name.includes('png') || image_name.includes('jpeg') || image_name.includes('jpg')) {
+            return 1;
+        }
+        return 0;
+    }
+
     onFormSubmit() {
         
         if(this.validateState() == 0) {
             alert("Form not valid!");
+            return;
+        }
+
+        if(this.validateImage() == 0) {
+            alert("Invalid Image file!\nMust me .png, .jpeg, .jpg");
             return;
         }
 
@@ -159,7 +172,7 @@ class PostForm extends Component {
                                 <input type="file" onChange={this.onInputChange.bind(this)} data-type="item_image" id="image"/>
                             </div>
                             <div className="file-path-wrapper">
-                                <input className="file-path validate" type="text"/>
+                                <input className="file-path validate" type="text" id="image_name"/>
                             </div>
                         </div>
                     </div>
