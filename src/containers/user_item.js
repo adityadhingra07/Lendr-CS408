@@ -21,7 +21,6 @@ class UserItem extends Component {
         let ref = this;
         let storage = firebase.app().storage().ref().child('images/' + this.props.item.item_image);
         storage.getDownloadURL().then(function (url) {
-            ref.setState({ image_url: url });
         }).catch(function (error) {
             console.log(error);
         });
