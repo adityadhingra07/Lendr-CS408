@@ -168,7 +168,7 @@ class EditItem extends Component {
                         <a onClick={this.onFormSubmit.bind(this)}  className="waves-effect waves-light btn">Update item</a>
                     </div>
                     <div className="row">
-                        <a onClick={this.deleteItem.bind(this)}  className="waves-effect waves-light btn" style={{color:"red"}}>Delete Item</a>
+                        <a onClick={this.deleteItem.bind(this)}  className="waves-effect waves-light red darken-2 btn">Delete Item</a>
                     </div>
                 </div>
             </div>
