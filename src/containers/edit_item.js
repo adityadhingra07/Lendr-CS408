@@ -20,6 +20,11 @@ class EditItem extends Component {
         };
     }
 
+		deleteItem() {
+      let itemsRef = firebase.app().database().ref().child('items').child(this.props.item.item_id).remove();
+	    this.props.userItems();
+		}
+
     getImgURL(item_image) {
         let ref = this;
         let storage = firebase.app().storage().ref().child('images/' + item_image);
@@ -79,7 +84,7 @@ class EditItem extends Component {
 
         console.log(this.state);
 	    let ref = this;
-        let itemsRef = firebase.app().database().ref().child('items').child(this.props.item.item_id).update({
+      let itemsRef = firebase.app().database().ref().child('items').child(this.props.item.item_id).update({
             item_description: ref.state.item_description,
             item_name: ref.state.item_name,
             item_price: ref.state.item_price,
@@ -160,7 +165,10 @@ class EditItem extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <a onClick={this.onFormSubmit.bind(this)}  className="waves-effect waves-light btn">Update Item</a>
+                        <a onClick={this.onFormSubmit.bind(this)}  className="waves-effect waves-light btn">Update item</a>
+                    </div>
+                    <div className="row">
+                        <a onClick={this.deleteItem.bind(this)}  className="waves-effect waves-light btn" style={{color:"red"}}>Delete Item</a>
                     </div>
                 </div>
             </div>
