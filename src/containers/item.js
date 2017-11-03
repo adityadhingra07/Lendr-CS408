@@ -19,15 +19,17 @@ class Item extends Component {
         storage.getDownloadURL().then(function (url) {
             ref.setState({ image_url: url });
         }).catch(function (error) {
-            console.log(error);
         });
     }
 
 		rentItem() {
-				console.log("Renting Item");
 				let itemInfo = { item_id: this.props.item.item_id,
 					     item_status: this.props.item.item_status }
-		    this.props.rentItem(itemInfo);
+				if (this.props.item.user_name == this.props.userName.email) {
+						console.log("Same user error");
+				} else {
+						this.props.rentItem(itemInfo);
+				}
     }
 
     //TODO:

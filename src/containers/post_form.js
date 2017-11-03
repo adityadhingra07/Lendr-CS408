@@ -21,6 +21,8 @@ class PostForm extends Component {
             item_rented_by: "",
             waitlist: ""
         };
+
+        this.validateState = this.validateState.bind(this);
     }
 
     onInputChange = (event) => {
@@ -60,20 +62,37 @@ class PostForm extends Component {
         }
     };
 
-   onFormSubmit() {
+    validateState() {
+        var check = 0;
+        console.log(this.state.item_description.length);
+        if(/\d*\.{0,1}\d+$/.test(this.state.item_price)) {
+            check++;
+        }
+        return check;
+    }
+
+    onFormSubmit() {
+        
+        if(this.validateState() == 0) {
+            alert("Form not valid!");
+            return;
+        }
+
         let item_image = document.getElementById('image').files[0];
         let storage = firebase.app().storage().ref().child('images/' + this.state.item_image);
             storage.put(item_image).then(function(snapshot) {
                 console.log('Image Uploaded');
             });
 
-        console.log(this.state);
         let itemsRef = firebase.app().database().ref().child('items');
-        console.log("itemsRef: ", itemsRef);
-        let item = itemsRef.push(this.state);
-        console.log("item: ", item.key);
-
-			  this.props.availableItems();
+				if (this.state.item_name == "") {
+                    alert("Item Name not entered!");                    
+				} else if (this.state.item_description == "") {
+                    alert("Item Description not entered!");
+                } else {
+        	let item = itemsRef.push(this.state);
+			    this.props.availableItems();
+				}
     }
 
     render() {

@@ -5,7 +5,7 @@ import * as firebase from 'firebase';
 
 class EditItem extends Component {
     constructor(props) {
-        debugger;
+        //debugger;
         super(props);
 
 				let item = this.props.item;

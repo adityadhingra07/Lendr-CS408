@@ -17,6 +17,7 @@ import Items from '../containers/items';
 import UserItems from '../containers/user_items';
 import PostForm from '../containers/post_form';
 import EditItem from '../containers/edit_item';
+import NoUserItems from '../containers/no_user_items';
 
 class App extends Component {
 
@@ -34,8 +35,8 @@ class App extends Component {
         this.renderSelection = this.renderSelection.bind(this);
         this.postItem = this.postItem.bind(this);
         this.availableItems = this.availableItems.bind(this);
-	    this.userItems = this.userItems.bind(this);
-	    this.editItem = this.editItem.bind(this);
+	      this.userItems = this.userItems.bind(this);
+	      this.editItem = this.editItem.bind(this);
     }
 
     componentDidMount() {
@@ -85,11 +86,23 @@ class App extends Component {
                 <PostForm userName={this.state.user} availableItems={this.availableItems} />
             );
         }
-        else if (this.props.renderSelector == 'AVAILABLE_ITEMS' && this.state.user) {
+        else if (this.props.renderSelector == 'AVAILABLE_ITEMS') {
+            if (this.state.user) {
+                return (
+                    <Items userName={this.state.user}/>
+                );
+            } else {
+                <Items userName={""}/>
+            }
+            
+        }
+				else if (this.props.renderSelector == 'AVAILABLE_ITEMS') {
+						console.log("I'm here");
             return (
-                <Items userName={this.state.user}/>
+                <NoUserItems />
             );
         }
+
         else if (this.props.renderSelector == 'USER_ITEMS' && this.state.user) {
             return (
                 <UserItems userName={this.state.user} edit={this.editItem} />
@@ -115,8 +128,6 @@ class App extends Component {
     }
     
     render() {
-
-        console.log(this.state.user);
         return (
 
             <div className="animated fadeIn">

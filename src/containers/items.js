@@ -23,7 +23,7 @@ class Items extends Component {
 				itemsRef.on('value', function(snapshot) {
 						snapshot.forEach(function(childSnapshot) {
 								items.push(childSnapshot.val());
-								console.log(childSnapshot.val());
+								//console.log(childSnapshot.val());
 								let item = childSnapshot.val();
 								item['item_id'] = childSnapshot.key;
 								ref.setState((prevState) => { items: prevState.item_list.push(item) });
@@ -32,9 +32,7 @@ class Items extends Component {
 		}
 
 		rentItem(itemInfo) {
-				console.log("In parent rent item", itemInfo);
 				if (itemInfo.item_status == 'available') {
-					console.log('REntPLZ');
 					// Change the status of the item here
 					// Proceed by updating the local state first and then push
 					// the changes to Firebase
@@ -61,10 +59,11 @@ class Items extends Component {
 		}
 
 		render() {
+				//console.log(this.props.userName, "USERNAME IN ITEMS");
 				if (this.state.item_list.length == 0) {
 						return null
 				} else {
-						console.log('It comes here', this.state.item_list);
+						//console.log('It comes here', this.state.item_list);
 						return (
 										<div>
 										{ this.state.item_list.map(item => <Item userName={this.props.userName} key={item.item_id} item={item} rentItem={this.rentItem} />) }
