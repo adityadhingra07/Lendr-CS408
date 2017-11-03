@@ -21,7 +21,7 @@ const NavBar = (props) => {
                         <li>
                             {props.navBarProps.userInfo
                                 ?
-                                <a id="auth-button" onClick="">
+                                <a id="auth-button" onClick={props.navBarProps.stateLogout}>
                                     Log out of
                                     <div className="chip">
                                         <img src={props.navBarProps.userInfo.photoURL} alt="Contact Person" />

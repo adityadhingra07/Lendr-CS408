@@ -69,7 +69,7 @@ class Item extends Component {
                         <div className="card-image">
                             <img className="responsive-img" id="item_image" src={this.state.image_url}/>
                         </div>
-			{/*<span style={{float: 'right'}}> {item.item_status}  </span>*/}
+			            <span id="item_status_available" className="chip" style={{float: 'right'}}> Available  </span>
                         <div className="card-content black-text">
                             <span className="card-title">{item.item_name}</span>
                             <blockquote>Price: ${item.item_price} {item.item_rate} </blockquote>

@@ -7,7 +7,7 @@ import firebase, {auth, provider} from '../firebase.js';
 import postItemButton from '../actions/post_item_button';
 import availableItemsButton from '../actions/available_items';
 import userItemsButton from '../actions/user_items';
-import editItemButton from '../actions/edit_item_button';
+import editItemButton from '../actions/edit_item_button'; 
 
 //import components
 import NavBar from './nav_bar';
@@ -17,6 +17,7 @@ import Items from '../containers/items';
 import UserItems from '../containers/user_items';
 import PostForm from '../containers/post_form';
 import EditItem from '../containers/edit_item';
+import FakePostForm from '../components/fake_post_form'
 
 class App extends Component {
 
@@ -84,6 +85,11 @@ class App extends Component {
         if (this.props.renderSelector == 'POST_NEW_ITEM' && this.state.user) {
             return (
                 <PostForm userName={this.state.user} availableItems={this.availableItems} />
+            );
+        }
+        else if(this.props.renderSelector == 'POST_NEW_ITEM' && !this.state.user) {
+            return(
+                <FakePostForm/>
             );
         }
         else if (this.props.renderSelector == 'AVAILABLE_ITEMS' && this.state.user) {
