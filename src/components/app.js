@@ -86,18 +86,12 @@ class App extends Component {
                 <PostForm userName={this.state.user} availableItems={this.availableItems} />
             );
         }
-        else if (this.props.renderSelector == 'AVAILABLE_ITEMS') {
-            if (this.state.user) {
-                return (
-                    <Items userName={this.state.user}/>
-                );
-            } else {
-                <Items userName={""}/>
-            }
-            
+        else if (this.props.renderSelector == 'AVAILABLE_ITEMS' && this.state.user) {
+				return (
+					<Items userName={this.state.user}/>
+				);
         }
-				else if (this.props.renderSelector == 'AVAILABLE_ITEMS') {
-						console.log("I'm here");
+		else if (this.props.renderSelector == 'AVAILABLE_ITEMS') {
             return (
                 <NoUserItems />
             );
