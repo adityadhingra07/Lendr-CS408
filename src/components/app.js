@@ -17,6 +17,7 @@ import Items from '../containers/items';
 import UserItems from '../containers/user_items';
 import PostForm from '../containers/post_form';
 import EditItem from '../containers/edit_item';
+import NoUserItems from '../containers/no_user_items';
 
 class App extends Component {
 
@@ -95,6 +96,13 @@ class App extends Component {
             }
             
         }
+				else if (this.props.renderSelector == 'AVAILABLE_ITEMS') {
+						console.log("I'm here");
+            return (
+                <NoUserItems />
+            );
+        }
+
         else if (this.props.renderSelector == 'USER_ITEMS' && this.state.user) {
             return (
                 <UserItems userName={this.state.user} edit={this.editItem} />
