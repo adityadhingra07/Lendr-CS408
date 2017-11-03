@@ -61,7 +61,7 @@ class PostForm extends Component {
     };
 
    onFormSubmit() {
-       debugger;
+        let image_name = document.getElementById('image_name').value;
         let item_image = document.getElementById('image').files[0];
         let storage = firebase.app().storage().ref().child('images/' + this.state.item_image);
             storage.put(item_image).then(function(snapshot) {
@@ -144,7 +144,7 @@ class PostForm extends Component {
                                 <input type="file" onChange={this.onInputChange.bind(this)} data-type="item_image" id="image"/>
                             </div>
                             <div className="file-path-wrapper">
-                                <input className="file-path validate" type="text"/>
+                                <input className="file-path validate" type="text" id="image_name"/>
                             </div>
                         </div>
                     </div>
