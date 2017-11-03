@@ -10,7 +10,7 @@ class Item extends Component {
         this.getImgURL = this.getImgURL.bind(this);
         this.rentItem = this.rentItem.bind(this);
         this.buttonRender = this.buttonRender.bind(this);
-			  this.returnItem = this.returnItem.bind(this);        
+			  this.returnItem = this.returnItem.bind(this);
     }
 
     getImgURL() {
@@ -32,7 +32,45 @@ class Item extends Component {
 
     //TODO:
     returnItem() {
+        let recipients = "";
+        let content = "&subject=Woohoo! The item is off the Waitlist - Lendr&text=Hi there, The item you have been looking for is off the waitlist! Good luck :)&from=lendr@support.com";
+        let emailer = "https://api.sendgrid.com/api/mail.send.json?api_user=yashshiroya&api_key=3ma1ls3nd1ng";
+        let itemsRef = firebase.app().database().ref().child('items').child(this.props.item.item_id).child("waitlist");
+        itemsRef.on('value', function(snapshot) {
+            let emails = Object.values(snapshot.val())
+            emails.forEach(function (email) {
+                if(!recipients.includes(email)) {
+                    recipients += "&to[]=" + email;
+                }
+            });
 
+            emailer = emailer + recipients + content;
+            console.log(emailer);
+
+            let data = null;
+
+            let xhr = new XMLHttpRequest();
+
+            xhr.addEventListener("readystatechange", function () {
+                if (this.readyState === 4) {
+                    console.log(this.responseText);
+                }
+            });
+
+            xhr.open("GET", emailer);
+            xhr.setRequestHeader("content-type", "application/json");
+            xhr.send(data);
+
+            console.log(recipients);
+        });
+
+        itemsRef.remove();
+        itemsRef = firebase.app().database().ref().child('items').child(this.props.item.item_id).update({
+            item_status: "available",
+            item_rented_by: ""
+        });
+
+        location.reload();
     }
     
     buttonRender() {
