@@ -28,7 +28,7 @@ const NavBar = (props) => {
                                         {props.navBarProps.userInfo.displayName}
                                     </div>
                                 </a>
-                                : <a id="auth-button-sign-in" onClick={props.navBarProps.stateLogin}><img id="auth-img" src="../../assets/web/2x/btn_google_signin_dark_normal_web@2x.png"/></a>
+                                : <a id="auth-button-sign-in" onClick={props.navBarProps.stateLogin}><img id="auth-img" src="assets/web/2x/btn_google_signin_dark_normal_web@2x.png"/></a>
                             }
                         </li>
                     </ul>
@@ -53,7 +53,7 @@ const NavBar = (props) => {
                                         {props.navBarProps.userInfo.displayName}
                                     </div>
                                 </a>
-                                : <a id="auth-button-sign-in" onClick={props.navBarProps.stateLogin}><img id="auth-img" src="../../assets/web/2x/btn_google_signin_dark_normal_web@2x.png"/></a>
+                                : <a id="auth-button-sign-in" onClick={props.navBarProps.stateLogin}><img id="auth-img" src="assets/web/2x/btn_google_signin_dark_normal_web@2x.png"/></a>
                             }
                         </li>
                     </ul>
