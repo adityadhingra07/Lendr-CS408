@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+		"build": "webpack"
   },
   "devDependencies": {
     "babel-core": "^6.2.1",
